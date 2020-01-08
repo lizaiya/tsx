@@ -1,7 +1,7 @@
 <template>
 <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <Jsx/>
+    <Jsx :prop-msg="msg"/>
     <el-button type="primary">elementUI</el-button>
     <HelloWorld :msg="msg" />
 </div>
@@ -19,7 +19,7 @@ import Jsx from '@/components/Jsx.tsx'
   }
 })
 export default class Home extends Vue {
-  msg = '黎在亚';
+  msg = 'props黎在亚';
   mounted (): void {
     console.log('123')
   }

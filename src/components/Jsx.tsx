@@ -1,13 +1,15 @@
-import { Component, Watch, Vue } from 'vue-property-decorator'
+import { Component, Watch, Vue, Prop } from 'vue-property-decorator'
 import style from '../assets/style.scss'
 @Component({})
 export default class Jsx extends Vue {
   public value = ''
           msg=''
+  @Prop({ required: false })
+  public propMsg?:string
   @Watch('value')
-          protected valueWatch (newValue:any, oldValue:any) {
-            this.msg = `监听到属性value发生变化，新的值为：${newValue}`
-          }
+  protected valueWatch (newValue:any, oldValue:any) {
+    this.msg = `监听到属性value发生变化，新的值为：${newValue}`
+  }
   public get valueLength () {
     return this.value.length
   }
@@ -21,6 +23,7 @@ export default class Jsx extends Vue {
         <el-button onClick={() => this.handleClick('参数')}>按钮</el-button>
         <p class={style.class1}>{this.msg}</p>
         <p>{this.valueLength}</p>
+        <p>{this.propMsg}</p>
       </div>
     )
   }
